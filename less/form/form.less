@@ -1,0 +1,112 @@
+@import "../common/vars";
+@import "../common/mixins";
+
+.form {
+  padding: 74px 32px 68px 46px;
+  background-color: @color-black;
+
+  &__container {
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 1fr 1fr 170px;
+    grid-gap: 19px;
+  }
+
+  &__button {
+    border: none;
+    border-radius: 2px;
+    background-color: @color-button-bg;
+    .font-sizes(@color-button-text, 14px, 500, 16px);
+    cursor: pointer;
+  }
+}
+
+.form-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 2px 2px 0 0;
+  background-color: @color-white;
+
+  &__input {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    padding: 22px 0 10px 12px;
+    border: none;
+    border-bottom: 2px solid @color-input-border;
+    background-color: transparent;
+    .font-sizes(@color-input-value, 14px, 400, 16px);
+    .animations(border-color, 0.5s, 0s, linear);
+    box-sizing: border-box;
+    caret-color: @color-input-caret;
+  }
+
+  &__input:focus {
+    border-color: @color-input-border-active;
+
+    ~ .form-field__helper {
+      bottom: -18px;
+      z-index: 0;
+      opacity: 1;
+    }
+
+    ~ .form-field__label {
+      top: 6px;
+      .font-sizes( @color-input-label, 11px, 400, 12px);
+    }
+  }
+
+  &__input:valid {
+    border-color: @color-input-border-active;
+
+    ~ .form-field__label {
+      top: 6px;
+      .font-sizes( @color-input-label, 11px, 400, 12px);
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 12px;
+    .font-sizes(@color-input-label, 14px, 400, 16px);
+    .animations(all, 0.1s, 0s, linear);
+  }
+
+  &__helper {
+    position: absolute;
+    right: 12px;
+    left: 12px;
+    z-index: -1;
+    opacity: 0;
+    .font-sizes(@color-input-helper, 11px, 400, 12px);
+    .animations(opacity, 1s, 0s, ease);
+  }
+}
+
+.input-show-pass {
+  position: absolute;
+  right: 12px;
+  z-index: 3;
+  height: 15px;
+  cursor: pointer;
+
+  &__svg {
+    width: 15px;
+    height: 15px;
+    fill: @color-input-icon;
+  }
+}
+
+@media (max-width: @tablet-viewport-point) {
+
+  .form {
+    padding: 32px 55px 32px 64px;
+
+    &__container {
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-columns: 1fr;
+      grid-gap: 32px;
+    }
+  }
+}

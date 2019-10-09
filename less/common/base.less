@@ -1,0 +1,26 @@
+@import "./vars";
+
+input,
+button {
+  outline: none;
+}
+
+.body {
+  min-height: 100vh;
+  background-color: @color-body-bg;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: @color-container-bg;
+}
+
+@media (min-width: @tablet-viewport-point) {
+
+  .body {
+    padding-top: 52px;
+  }
+}
